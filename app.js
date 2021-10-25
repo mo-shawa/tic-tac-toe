@@ -4,9 +4,11 @@
 
 const squares = document.querySelectorAll("main > div");
 const main = document.querySelector("main");
+let nextPlayer = "O";
 
 main.addEventListener("click", function (evt) {
 	const square = evt.target;
 	console.log(square);
-	square.innerHTML = `<h1>X</h1>`;
+	nextPlayer == "O" ? (nextPlayer = "X") : (nextPlayer = "O");
+	square.innerHTML = `<h1>${nextPlayer}</h1>`;
 });
