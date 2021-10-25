@@ -1,0 +1,23 @@
+body {
+	display: flex;
+	justify-content: center;
+}
+
+main > div {
+	height: 10rem;
+	width: 10rem;
+	background: aqua;
+	color: black;
+	text-align: center;
+}
+
+main {
+	display: grid;
+	grid-template-rows: 10rem 10rem 10rem;
+	grid-template-columns: 10rem 10rem 10rem;
+	gap: 3px;
+}
+
+h1 {
+	font-size: 4em;
+}
