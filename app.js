@@ -60,9 +60,11 @@ function checkWin(player) {
 			squares[winCombos[i][2]].textContent == player
 		) {
 			won = true;
-			console.log("itwork");
+			console.log("someone won");
 		}
 	}
 	return won;
 }
-// resetBtn.addEventListener("click", init);
+resetBtn.addEventListener("click", init);
+
+console.log("branch test");
