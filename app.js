@@ -66,5 +66,3 @@ function checkWin(player) {
 	return won;
 }
 resetBtn.addEventListener("click", init);
-
-console.log("branch test");
