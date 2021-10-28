@@ -1,4 +1,4 @@
-// // define required constants
+// Define required constants
 
 const winCombos = [
 	[0, 1, 2],
@@ -11,25 +11,22 @@ const winCombos = [
 	[2, 4, 6],
 ];
 
-// //Define required variables to track state
-
-// define required constants
 const squares = document.querySelectorAll(".cell");
 const main = document.querySelector("main");
-
-let nextPlayer = "X";
 const resetBtn = document.getElementById("reset");
 const result = document.getElementById("result");
 
-// define required variables used to track state of the game
+// Define required variables to track state
+let nextPlayer = "X";
 let won = false;
 
+// Initialization / Reset function
 function init() {
 	won = false;
 	squares.forEach(function (evt) {
 		evt.innerHTML = "";
-		result.textContent = "X's turn";
 		nextPlayer = "X";
+		result.textContent = `${nextPlayer}'s turn`;
 	});
 }
 
@@ -42,11 +39,13 @@ main.addEventListener("click", function (evt) {
 	// If clicked block is empty, insert X or O
 	square.innerHTML ? undefined : (square.innerHTML = `<h1>${nextPlayer}</h1>`);
 	// Check win
-	checkWin(nextPlayer)
-		? (result.textContent = `${nextPlayer} won bruh`)
-		: undefined;
+	if (checkWin(nextPlayer)) {
+		result.innerHTML = `${nextPlayer} won!<br>
+		Press Reset to play again.`;
+		return;
+	}
 
-	// Update text
+	// Update turn text
 	nextPlayer == "O" ? (nextPlayer = "X") : (nextPlayer = "O");
 	result.textContent = `${nextPlayer}'s turn`;
 });
@@ -65,6 +64,9 @@ function checkWin(player) {
 	}
 	return won;
 }
+
+// let checkDraw = squares.every(cell => cell.)
+
 resetBtn.addEventListener("click", init);
 
-console.log("branch test");
+console.log("test branch");
