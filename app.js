@@ -40,11 +40,16 @@ main.addEventListener("click", function (evt) {
 	square.innerHTML ? undefined : (square.innerHTML = `<h1>${nextPlayer}</h1>`);
 	// Check win
 	if (checkWin(nextPlayer)) {
-		result.innerHTML = `${nextPlayer} won!<br>
+		result.innerHTML = `${nextPlayer} won!<br />
 		Press Reset to play again.`;
 		return;
 	}
-
+	// After win is ruled out, check for draw
+	if (checkDraw(squares)) {
+		result.innerHTML = `It's a draw!<br />
+		Press Reset to play again.`;
+		return;
+	}
 	// Update turn text
 	nextPlayer == "O" ? (nextPlayer = "X") : (nextPlayer = "O");
 	result.textContent = `${nextPlayer}'s turn`;
@@ -65,8 +70,14 @@ function checkWin(player) {
 	return won;
 }
 
-// let checkDraw = squares.every(cell => cell.)
-
+function checkDraw(squares) {
+	let count = 0;
+	squares.forEach((cell) => {
+		cell.textContent ? count++ : undefined;
+	});
+	return count == 9;
+}
+console.log(checkDraw);
 resetBtn.addEventListener("click", init);
 
 console.log("test branch");
